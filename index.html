@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="theme-color" content="#000000" />
+    <link
+      rel="shortcut icon"
+      href="/icons/icon-128x128.png"
+      type="image/x-icon"
+    />
+    <link rel="apple-touch-icon" href="/icons/icon-384x384.png" />
+    <link rel="stylesheet" href="./css/fonts.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/menu.css" />
+    <link rel="manifest" href="./manifest.json" />
+    <title>Who's the Spy?</title>
+  </head>
+  <body>
+    <main>
+      <div class="titled">
+        <p class="titlef">Who's the Spy?</p>
+      </div>
+      <div class="br1">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+      </div>
+
+      <div class="center">
+        <p class="frog">Select how many Players you have:</p>
+
+        <form>
+          <fieldset data-quantity>
+            <legend>Change quantity</legend>
+          </fieldset>
+        </form>
+        <p class="frog">Select how many Spies do you need:</p>
+        <form>
+          <fieldset data-quantity2>
+            <legend>Change quantity</legend>
+          </fieldset>
+        </form>
+
+        <p class="frog">How much time do you need? (Minutes):</p>
+        <form>
+          <fieldset data-quantity3>
+            <legend>Change quantity</legend>
+          </fieldset>
+        </form>
+        <button class="startB" id="startB">Start</button>
+      </div>
+      <div class="game">
+        <h1>Next Person Should be Ready</h1>
+        <h1 id="out1"></h1>
+        <button class="NextB" id="NextB">Next</button>
+      </div>
+      <div class="last">
+        <h1 id="out2"></h1>
+        <h1 id="timer"></h1>
+      </div>
+    </main>
+    <script type="module">
+      import QuantityInput from "./js/quantity.js";
+      (function () {
+        let quantities = document.querySelectorAll("[data-quantity]");
+
+        if (quantities instanceof Node) quantities = [quantities];
+        if (quantities instanceof NodeList)
+          quantities = [].slice.call(quantities);
+        if (quantities instanceof Array) {
+          quantities.forEach(
+            (div) =>
+              (div.quantity = new QuantityInput(div, "Down", "Up", "lm1"))
+          );
+        }
+      })();
+
+      (function () {
+        let quantities2 = document.querySelectorAll("[data-quantity2]");
+
+        if (quantities2 instanceof Node) quantities2 = [quantities2];
+        if (quantities2 instanceof NodeList)
+          quantities2 = [].slice.call(quantities2);
+        if (quantities2 instanceof Array) {
+          quantities2.forEach(
+            (div) =>
+              (div.quantity = new QuantityInput(div, "Down", "Up", "lm2"))
+          );
+        }
+      })();
+
+      (function () {
+        let quantities3 = document.querySelectorAll("[data-quantity3]");
+
+        if (quantities3 instanceof Node) quantities3 = [quantities3];
+        if (quantities3 instanceof NodeList)
+          quantities3 = [].slice.call(quantities3);
+        if (quantities3 instanceof Array) {
+          quantities3.forEach(
+            (div) =>
+              (div.quantity = new QuantityInput(div, "Down", "Up", "lm3"))
+          );
+        }
+      })();
+    </script>
+    <script src="./js/words.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
