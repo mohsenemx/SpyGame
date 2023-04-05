@@ -55,6 +55,9 @@ body {
     font-size: 3vh;
     transition: 0.5s;
   }
+  .NextB:hover {
+    background-color: #afafaf;
+  }
   .pers {
     font-family: 'IranSans';
   }

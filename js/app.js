@@ -8,10 +8,14 @@ const gameDiv = document.querySelector(".game");
 const out1 = document.querySelector("#out1");
 const out2 = document.querySelector("#out2");
 
+let numOfPlayers = 00;
+let numOfSpies = 00;
+let totalMinutes = 00;
+let buttonCkeckL = true;
 let gameWord = "";
-
+let spies = [];
 let currentPlayer = 1;
-
+let functionTurn = "game";
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function () {
     navigator.serviceWorker
@@ -24,53 +28,71 @@ startB.addEventListener("click", function () {
   draw();
 });
 function draw() {
-  const numOfPlayers = document.querySelector("#lm1");
-  const numOfSpies = document.querySelector("#lm2");
-  const totalMinutes = document.querySelector("#lm3");
   centerDiv.style.display = "none";
   titledDiv.style.display = "none";
   br1Div.style.display = "none";
   gameDiv.style.display = "block";
 
   initg();
-  game(numOfPlayers.length, numOfSpies.length, totalMinutes.length);
 }
 function initg() {
   let rnd = Math.floor(Math.random() * words.length);
   gameWord = words[rnd];
-}
-function game(players, spies, minutes) {
-  if (currentPlayer >= players) {
-    last(minutes);
+  console.log("gameWord: " + gameWord);
+
+  numOfPlayers = document.querySelector("#lm1").valueAsNumber;
+  numOfSpies = document.querySelector("#lm2").valueAsNumber;
+  totalMinutes = document.querySelector("#lm3").valueAsNumber;
+
+  for (let i = 0; i < numOfSpies; i++) {
+    let rndf = Math.floor(Math.random() * (numOfPlayers + 1));
+
+    if (spies.indexOf(rndf) == -1) spies.push(rndf);
+    console.log("spies: " + spies);
   }
 
-  console.log("gameWord: " + gameWord);
-  out1.innerHTML = "It's Player " + currentPlayer + "'s Turn";
-  currentPlayer += 1;
+  buttonCkeck();
 }
-NextB.addEventListener("click", function () {
-  wordDisp();
-});
+
+function buttonCkeck() {
+  NextB.addEventListener("click", function () {
+    if (functionTurn == "game") game();
+    else if (functionTurn == "wordDisp") wordDisp();
+  });
+  // if (buttonCkeckL) buttonCkeck();
+}
+function game() {
+  out1.innerHTML = "It's Player " + currentPlayer + "'s Turn";
+  if (currentPlayer > numOfPlayers) {
+    last(totalMinutes);
+  } else {
+    wordDisp();
+    currentPlayer += 1;
+  }
+  functionTurn = "wordDisp";
+}
+
 function wordDisp() {
-  out1.innerHTML =
-    "Your Word is:  " + '<span class="pers">' + gameWord + "</span>";
-  game();
+  if (!spies.includes(currentPlayer)) {
+    out1.innerHTML = "You are the Spy";
+  } else {
+    out1.innerHTML =
+      "Your Word is:  " + '<span class="pers">' + gameWord + "</span>";
+  }
+
+  functionTurn = "game";
 }
 function last(totalMinutes) {
   gameDiv.style.display = "none";
-  var minute = totalMinutes;
-  var sec = 60;
-  setInterval(function () {
-    document.getElementById("timer").innerHTML = minute + ":" + sec;
+  let sec = totalMinutes * 60;
+  const interval = setInterval(function () {
+    document.getElementById("timer").innerHTML =
+      Math.floor(sec / 60) + ":" + (sec % 60);
     sec--;
 
-    if (sec == 00) {
-      minute--;
-      sec = 60;
-
-      if (minute == 0) {
-        out2.innerHTML = "Time's Up!";
-      }
+    if (sec <= 00) {
+      out2.innerHTML = "Time's Up!";
+      clearInterval(interval);
     }
   }, 1000);
 }

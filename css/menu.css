@@ -55,7 +55,7 @@ body {
     padding: 0;
     margin: 0;
     border: 0;
-    background: #fff
+    background:
       url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="50"><path d="M17 25h16M67 25h16M75 17v16" fill="none" stroke="rgb(59,69,66)" stroke-width="1.5px" stroke-linecap="round" stroke-linejoin="round" /></svg>')
       no-repeat 0 0;
     background-size: 5.6rem 2.8rem;
@@ -64,8 +64,18 @@ body {
     text-indent: 100%;
     border-radius: 1.4rem;
     cursor: pointer;
-    transition: opacity 0.15s;
-    opacity: 0.5;
+    transition: background-color 200ms;
+  }
+
+  [data-quantity] button::before {
+    position:absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 100%;
+    z-index: -1;
+
   }
   
   [data-quantity] button:active {
@@ -77,8 +87,8 @@ body {
     outline: none;
   }
   
-  [data-quantity] button:hover {
-    opacity: 1;
+  [data-quantity] button:hover::before {
+    background-color: #eee;
   }
   
   [data-quantity] button.sub {
