@@ -11,6 +11,26 @@ const out1 = document.querySelector("#out1");
 const out2 = document.querySelector("#out2");
 const out11 = document.querySelector("#out11");
 
+// Class for language selection, unused for now
+class lang {
+  constructor(lang) {
+    if (lang == "en") {
+      const words = {};
+      const sentences = {
+        youarespy: "You are a spy",
+        youword: "Your Wors is: ",
+        whosspy: "Who's the Spy?",
+      };
+    } else {
+      const sentences = {
+        youarespy: "شما جاسوس هستید",
+        youword: "کلمه شما: ",
+        whosspy: "جاسوس کیه؟",
+      };
+    }
+  }
+}
+
 let numOfPlayers = 0;
 let numOfSpies = 0;
 let totalMinutes = 0;
