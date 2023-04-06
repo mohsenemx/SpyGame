@@ -61,3 +61,43 @@ body {
   .pers {
     font-family: 'IranSans';
   }
+  .ShowB {
+    padding: 3vh;
+    background-color: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 4vh;
+    font-family: 'Poppins';
+    font-size: 3vh;
+    transition: 0.5s;
+  }
+  .ShowB:hover {
+    background-color: #afafaf;
+  }
+
+  .HideB {
+    display: none;
+    padding: 3vh;
+    background-color: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 4vh;
+    font-family: 'Poppins';
+    font-size: 3vh;
+    transition: 0.5s;
+  }
+  .HideB:hover {
+    background-color: #afafaf;
+  }
+  .last {
+  font-family: 'PoppinsBold';
+  font-size: 6vh;
+  padding: 4vh;
+  transform: translate(0%, -50%);
+  }
+  #error1 {
+    color: #e50b0b;
+    padding: 2.5vh;
+    font-size: 2vh;
+    font-family: 'PoppinsBold';
+  }
