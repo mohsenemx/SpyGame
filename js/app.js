@@ -11,12 +11,9 @@ const out1 = document.querySelector("#out1");
 const out2 = document.querySelector("#out2");
 const out11 = document.querySelector("#out11");
 
-const error1 = document.querySelector("#error1");
-
-let numOfPlayers = 00;
-let numOfSpies = 00;
-let totalMinutes = 00;
-let buttonCkeckL = true;
+let numOfPlayers = 0;
+let numOfSpies = 0;
+let totalMinutes = 0;
 let gameWord = "";
 let spies = [];
 let currentPlayer = 1;
@@ -39,8 +36,9 @@ function draw() {
 
   initg();
 }
+
 function initg() {
-  let rnd = Math.floor(Math.random() * words.length);
+  let rnd = Math.floor(Math.random() * (words.length + 1));
   gameWord = words[rnd];
   console.log("gameWord: " + gameWord);
 
@@ -66,6 +64,7 @@ ShowB.addEventListener("click", function () {
   HideB.style.display = "block";
   ShowB.style.display = "none";
 });
+
 HideB.addEventListener("click", function () {
   out1.innerHTML = "Click Show or Click Next";
 
@@ -97,7 +96,7 @@ function last(totalMinutes) {
       Math.floor(sec / 60) + ":" + (sec % 60);
     sec--;
 
-    if (sec < 00) {
+    if (sec < 0) {
       out2.innerHTML = "Time's Up!";
       document.getElementById("timer").style.display = "none";
       clearInterval(interval);

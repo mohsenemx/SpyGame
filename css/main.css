@@ -95,9 +95,3 @@ body {
   padding: 4vh;
   transform: translate(0%, -50%);
   }
-  #error1 {
-    color: #e50b0b;
-    padding: 2.5vh;
-    font-size: 2vh;
-    font-family: 'PoppinsBold';
-  }
