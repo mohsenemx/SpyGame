@@ -1,16 +1,16 @@
 const whosthespy = "whos-the-spy-v1";
 const assets = [
-  "/",
-  "/index.html",
-  "/css/style.css",
-  "/css/main.css",
-  "/css/fonts.css",
-  "/css/menu.css",
-  "/js/app.js",
-  "/js/quantity.js",
-  "/fonts/Poppins-Bold.ttf",
-  "/fonts/Poppins-Regular.ttf",
-  "/js/serviceWorker.js",
+  "./",
+  "./index.html",
+  "./css/style.css",
+  "./css/main.css",
+  "./css/fonts.css",
+  "./css/menu.css",
+  "./js/app.js",
+  "./js/quantity.js",
+  "./fonts/Poppins-Bold.ttf",
+  "./fonts/Poppins-Regular.ttf",
+  "./js/serviceWorker.js",
 ];
 
 self.addEventListener("install", (installEvent) => {
