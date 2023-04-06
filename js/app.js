@@ -60,18 +60,19 @@ function draw() {
 function initg() {
   let rnd = Math.floor(Math.random() * (words.length + 1));
   gameWord = words[rnd];
-  console.log("gameWord: " + gameWord);
+  /*console.log("gameWord: " + gameWord);*/
 
   numOfPlayers = document.querySelector("#lm1").valueAsNumber;
   numOfSpies = document.querySelector("#lm2").valueAsNumber;
   totalMinutes = document.querySelector("#lm3").valueAsNumber;
   let numOfSpies2 = numOfSpies;
-  for (let i = 0; i < numOfSpies2; i++) {
-    let rndf = Math.floor(Math.random() * (numOfPlayers + 1));
 
-    if (spies.indexOf(rndf) == -1) spies.push(rndf);
+  for (let i = 1; i <= numOfSpies2; i++) {
+    let rndf = Math.floor(Math.random() * (numOfPlayers - 1)) + 1;
+
+    if (!spies.includes(rndf)) spies.push(rndf);
     else numOfSpies2++;
-    console.log("spies: " + spies);
+    /*console.log("spies: " + spies);*/
   }
 }
 

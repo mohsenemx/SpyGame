@@ -10,6 +10,7 @@ const assets = [
   "./js/quantity.js",
   "./fonts/Poppins-Bold.ttf",
   "./fonts/Poppins-Regular.ttf",
+  "./fonts/IranSans.ttf",
   "./js/serviceWorker.js",
 ];
 

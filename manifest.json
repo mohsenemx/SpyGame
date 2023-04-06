@@ -2,6 +2,7 @@
     "name": "Who's the Spy?",
     "short_name": "Who's the Spy?",
     "start_url": "./index.html",
+    "description": "Find who is the spy in this amazing game!",
     "display": "standalone",
     "background_color": "#000000",
     "theme_color": "#000000",
